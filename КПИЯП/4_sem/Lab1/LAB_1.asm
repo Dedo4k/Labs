@@ -6,7 +6,7 @@ org 100h
     output_msg db "You enter:$"
     new_line db 0Dh,0Ah,'$'
     buf label byte
-
+ 
 .code
 start:
     mov ah,09h
