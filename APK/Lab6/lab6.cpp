@@ -8,7 +8,7 @@ void interrupt far (*old_Interrupt)(...); //ukazatel na obrabotchik prerivanii
 void indicator(unsigned char mask); //functiya upravleniya indicatorami
 void blinking(void); //functiya miganiya indikatorom
  
-int isResend = 1; // error flag / neobhodimosti povtornoi peredachi dannih
+int isResend = 1; // error flag / neobhodimosti povtornoi peredachi dannih 
 int quitFlag = 0; // exit program flag
 int blinkingON = 0; // flag miganiya indikatorami
 int main()
