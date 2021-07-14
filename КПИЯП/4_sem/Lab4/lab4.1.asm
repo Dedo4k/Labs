@@ -1,7 +1,7 @@
 .model small
 .stack 100h
-
-new_line macro ;перевод курсора
+ 
+new_line macro ;ГЇГҐГ°ГҐГўГ®Г¤ ГЄГіГ°Г±Г®Г°Г 
     mov ah,2
     mov dl,0dh
     int 21h
@@ -133,7 +133,7 @@ L1:
     
     setcursor 23,25
     mov ah,9
-    lea dx,str7 ; строка score
+    lea dx,str7 ; Г±ГІГ°Г®ГЄГ  score
     int 21h
     
 L2:
