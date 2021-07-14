@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
-#include <semaphore.h>
+#include <semaphore.h> 
 
 #define DIRNAME "/media/vlad/93134a84-bc92-4b91-ae8e-ee30139e88df/vlad/VSCProjects/spovm/lab5"
 #define OFNAME "file4.txt"
