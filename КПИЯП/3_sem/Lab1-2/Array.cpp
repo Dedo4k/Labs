@@ -7,7 +7,7 @@ Array::Array()
 {
 	this->size = 0;
 	ms = new int[0];
-} 
+}
 
 Array::Array(int size)
 {
