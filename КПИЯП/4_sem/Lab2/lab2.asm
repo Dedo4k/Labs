@@ -1,7 +1,7 @@
 org 100h
 .model small
 .stack 100h
-
+ 
 .data
     buf equ 20
     strb db buf
