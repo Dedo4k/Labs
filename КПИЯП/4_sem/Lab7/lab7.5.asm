@@ -1,7 +1,7 @@
 .model tiny
 .code
 org 100h
-
+ 
 start:
 
 shrink_memory macro
