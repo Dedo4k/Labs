@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Binary_tree&lt;TYPE&gt;">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIACAAAACAAAAAAAgAAAAAAAhAAASAAAAAAACAAA=</HashCode>
+      <FileName>Binary_tree.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Computer">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAACAAAAAAAAAAAAAAEQABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Computer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Monoblock">
+    <Position X="7.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAQABAAAQAAAAAAAAACAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Monoblock.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MPhone">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAAgAAAAAQAAAAAAAAAARAAAAAQAAABAAAAAAgAAA=</HashCode>
+      <FileName>MPhone.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyExc">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAQAAAAgAAAAAAIAAAAAAAAAAEAAAgACA=</HashCode>
+      <FileName>MyExc.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyExc_Vvod">
+    <Position X="10.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAACAABAAAAAAAAAAIAAAACIAAAAAAAABAAA=</HashCode>
+      <FileName>MyExc_Vvod.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Notebook">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAACQAAkAAAAAAAAIIAACAAAgAAAACAAAIAg=</HashCode>
+      <FileName>Notebook.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Portable">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIAAAAAAAAAAAAAAAAgAAAAAAAAAIAAAAAAAAACAA=</HashCode>
+      <FileName>Portable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Server">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAQAAAAAAAAAAAAEAAAAAAAABAAAwAAAAA=</HashCode>
+      <FileName>Server.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Static">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAAogAAAAAAAAAAAAIgAAAAACAAEAAAAAAACAAA=</HashCode>
+      <FileName>Static.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface&lt;TYPE&gt;">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAIAAAAABAAAgQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interface.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Node&lt;TYPE&gt;">
+    <Position X="12.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAAQAAAAgAA=</HashCode>
+      <FileName>Binary_tree.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
