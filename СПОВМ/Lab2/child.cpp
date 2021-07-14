@@ -1,9 +1,3 @@
-//
-//  main.cpp
-//  LabWork 2. Child
-//
-//  Created by Andrej Hurynovič on 7.03.21.
-//
 
 #include <iostream>
 #include <unistd.h>
