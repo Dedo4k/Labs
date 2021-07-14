@@ -8,7 +8,7 @@ start:
     flagSave db 0
     oldIRQ0 dd ?
     oldIRQ1 dd ?
-    
+     
     msgIntReturn db "Interrupts has been renewed", 0Dh,0Ah
     msgIntReturnSize equ 29
     msgSaved db "Screen was saved", 0Dh,0Ah
@@ -41,13 +41,13 @@ start:
         cmp flagKill,1
         jne keepIRQ
 
-        mov ah, 25h  ;устанавливаем адрес обработчика
+        mov ah, 25h  ;ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г Г¤Г°ГҐГ± Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
         mov al, 08h    
-        mov dx, word ptr cs:oldIRQ0      ;смещение обработчика
-        mov ds, word ptr cs:oldIRQ0 + 2  ;сегмент обработчика
+        mov dx, word ptr cs:oldIRQ0      ;Г±Г¬ГҐГ№ГҐГ­ГЁГҐ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
+        mov ds, word ptr cs:oldIRQ0 + 2  ;Г±ГҐГЈГ¬ГҐГ­ГІ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
         int 21h
         mov ah, 25h
-        mov al, 09h  ;устанавливаем адрес обработчика  
+        mov al, 09h  ;ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г Г¤Г°ГҐГ± Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ   
         mov dx, word ptr cs:oldIRQ1
         mov ds, word ptr cs:oldIRQ1 + 2
         int 21h
@@ -114,7 +114,7 @@ qqq:
         add videoPtr, ax
         add videoPtr, ax
         jmp loopFindWordEnd      
-    nextSym:                   ;ищем следующее совпадение
+    nextSym:                   ;ГЁГ№ГҐГ¬ Г±Г«ГҐГ¤ГіГѕГ№ГҐГҐ Г±Г®ГўГЇГ Г¤ГҐГ­ГЁГҐ
         add videoPtr, 2
     loopFindWordEnd:
         cmp videoPtr, screenEnd
@@ -134,12 +134,12 @@ qqq:
         mov al, 1
         mov bh, 0
         mov bl, 07h
-        mov cx, msgSavedSize           ;выводим сообщение о завершении поиска
+        mov cx, msgSavedSize           ;ГўГ»ГўГ®Г¤ГЁГ¬ Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ Г® Г§Г ГўГҐГ°ГёГҐГ­ГЁГЁ ГЇГ®ГЁГ±ГЄГ 
         lea bp, msgSaved
         int 10h
     oldIRQ0End: 
         pushf
-        call cs:dword ptr oldIRQ0      ;возвращаем назад старые обработчики прерывания
+        call cs:dword ptr oldIRQ0      ;ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ Г­Г Г§Г Г¤ Г±ГІГ Г°Г»ГҐ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГЁ ГЇГ°ГҐГ°Г»ГўГ Г­ГЁГї
         pop es
         pop ds
         popa 
@@ -150,7 +150,7 @@ qqq:
         pusha
         pushf
         call cs:dword ptr oldIRQ1
-        mov ah, 01h                ;проверка нажатия клавиш
+        mov ah, 01h                ;ГЇГ°Г®ГўГҐГ°ГЄГ  Г­Г Г¦Г ГІГЁГї ГЄГ«Г ГўГЁГё
         int 16h
         mov dh, ah
         jz newIRQ1end
@@ -184,7 +184,7 @@ qqq:
         int 21h
         cli
         
-        mov al, es:bx   ;загружаем видеопамять со словом
+        mov al, es:bx   ;Г§Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГЁГ¤ГҐГ®ГЇГ Г¬ГїГІГј Г±Г® Г±Г«Г®ГўГ®Г¬
         dec bx
         mov ah, es:bx
         cmp al, 0
@@ -192,7 +192,7 @@ qqq:
         cmp ah, 0
         jne endPrintSCR
         
-        mov ax, videoStart ;начало памяти
+        mov ax, videoStart ;Г­Г Г·Г Г«Г® ГЇГ Г¬ГїГІГЁ
         mov es, ax
         
         mov destFileCounter, 0
@@ -210,18 +210,18 @@ qqq:
         add ah, '0'
         mov destFileName + 2, al   
         mov destFileName + 3, ah
-        lea  dx, destFileName        ;формируем название файла
+        lea  dx, destFileName        ;ГґГ®Г°Г¬ГЁГ°ГіГҐГ¬ Г­Г Г§ГўГ Г­ГЁГҐ ГґГ Г©Г«Г 
         xor cx, cx
-        mov ah, 5Bh                  ;создаём новый файл
+        mov ah, 5Bh                  ;Г±Г®Г§Г¤Г ВёГ¬ Г­Г®ГўГ»Г© ГґГ Г©Г«
         int 21h
-        jnc nameFound                ;если файл создан успешно
+        jnc nameFound                ;ГҐГ±Г«ГЁ ГґГ Г©Г« Г±Г®Г§Г¤Г Г­ ГіГ±ГЇГҐГёГ­Г®
         inc destFileCounter
-        cmp ax, 50h                  ;если такой файл существует
+        cmp ax, 50h                  ;ГҐГ±Г«ГЁ ГІГ ГЄГ®Г© ГґГ Г©Г« Г±ГіГ№ГҐГ±ГІГўГіГҐГІ
         je openFindLoop
         jmp endPrintSCR
 
     nameFound:
-        mov destFile, ax             ;записываем идентификатор файла
+        mov destFile, ax             ;Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г° ГґГ Г©Г«Г 
         mov ax, videoPtr
         mov bl, 80
         div bl
@@ -283,7 +283,7 @@ cmp81:
     woNL:
         loop loopWriteSaved
         
-    loopWriteSavedEnd:             ;закрываем файл
+    loopWriteSavedEnd:             ;Г§Г ГЄГ°Г»ГўГ ГҐГ¬ ГґГ Г©Г«
         mov bx, destFile
         xor ax,ax
         mov ah,3eh
@@ -298,15 +298,15 @@ cmp81:
 
 handlerInstall:
         mov si, 80h
-        lea di, getWord     ;достаём из cmd искомое слово
+        lea di, getWord     ;Г¤Г®Г±ГІГ ВёГ¬ ГЁГ§ cmd ГЁГ±ГЄГ®Г¬Г®ГҐ Г±Г«Г®ГўГ®
         lodsb 
     loopSkip:
         lodsb
         cmp al, ' '
-        je loopSkip      ;пропускаем пробелы
+        je loopSkip      ;ГЇГ°Г®ГЇГіГ±ГЄГ ГҐГ¬ ГЇГ°Г®ГЎГҐГ«Г»
         cmp al, 0dh
-        je endErrMark    ;выход если конец строки
-        mov es:di, al    ;записываем символ в слово
+        je endErrMark    ;ГўГ»ГµГ®Г¤ ГҐГ±Г«ГЁ ГЄГ®Г­ГҐГ¶ Г±ГІГ°Г®ГЄГЁ
+        mov es:di, al    ;Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ Г±ГЁГ¬ГўГ®Г« Гў Г±Г«Г®ГўГ®
         inc di           
     loopCL:
         lodsb
@@ -314,44 +314,44 @@ handlerInstall:
         je endOneArg
         cmp al, 0dh
         je endOneArg
-        mov es:di, al    ;записываем остальные символы
+        mov es:di, al    ;Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ Г®Г±ГІГ Г«ГјГ­Г»ГҐ Г±ГЁГ¬ГўГ®Г«Г»
         inc di
         jmp loopCL
     endOneArg:
         ;mov [di],' ' 
         ;inc di
-        sub di, offset getWord    ;из конца слова отнимаем начало
-        mov wordSize, di       ;записываем длину слова
+        sub di, offset getWord    ;ГЁГ§ ГЄГ®Г­Г¶Г  Г±Г«Г®ГўГ  Г®ГІГ­ГЁГ¬Г ГҐГ¬ Г­Г Г·Г Г«Г®
+        mov wordSize, di       ;Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ Г¤Г«ГЁГ­Гі Г±Г«Г®ГўГ 
         
-        mov ah, 35h            ;получаем адрес обработчика
-        mov al, 08h            ;номер вектора обработчика таймера
+        mov ah, 35h            ;ГЇГ®Г«ГіГ·Г ГҐГ¬ Г Г¤Г°ГҐГ± Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
+        mov al, 08h            ;Г­Г®Г¬ГҐГ° ГўГҐГЄГІГ®Г°Г  Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ  ГІГ Г©Г¬ГҐГ°Г 
         int 21h
-        mov word ptr oldIRQ0, bx     ;смещение обработчика
-        mov word ptr oldIRQ0 + 2, es ;сегмент обработчика
+        mov word ptr oldIRQ0, bx     ;Г±Г¬ГҐГ№ГҐГ­ГЁГҐ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
+        mov word ptr oldIRQ0 + 2, es ;Г±ГҐГЈГ¬ГҐГ­ГІ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
 
         lea di,   flag      
         lea si,   flag
         mov cx, 4
-        repe cmpsb              ;проверяем 
+        repe cmpsb              ;ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ 
         je loaded
-        mov ah, 25h             ;устанавливаем адрес обработчика
-        mov al, 08h             ;таймер
-        mov dx, offset newIRQ0  ;смещение обработчика в сегменте
+        mov ah, 25h             ;ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г Г¤Г°ГҐГ± Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
+        mov al, 08h             ;ГІГ Г©Г¬ГҐГ°
+        mov dx, offset newIRQ0  ;Г±Г¬ГҐГ№ГҐГ­ГЁГҐ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ  Гў Г±ГҐГЈГ¬ГҐГ­ГІГҐ
         int 21h
-        mov ah, 35h             ;получаем адрес обработчика
-        mov al, 09h             ;номер вектора прерывания от клавиатуры
+        mov ah, 35h             ;ГЇГ®Г«ГіГ·Г ГҐГ¬ Г Г¤Г°ГҐГ± Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
+        mov al, 09h             ;Г­Г®Г¬ГҐГ° ГўГҐГЄГІГ®Г°Г  ГЇГ°ГҐГ°Г»ГўГ Г­ГЁГї Г®ГІ ГЄГ«Г ГўГЁГ ГІГіГ°Г»
         int 21h
-        mov word ptr oldIRQ1, bx  ;смещение обработчика
-        mov word ptr oldIRQ1 + 2, es  ;сегмент обработчика  
+        mov word ptr oldIRQ1, bx  ;Г±Г¬ГҐГ№ГҐГ­ГЁГҐ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ 
+        mov word ptr oldIRQ1 + 2, es  ;Г±ГҐГЈГ¬ГҐГ­ГІ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ   
         mov ah, 25h
         mov al, 09h
-        mov dx, offset newIRQ1   ;смещение обработчика в сегменте
+        mov dx, offset newIRQ1   ;Г±Г¬ГҐГ№ГҐГ­ГЁГҐ Г®ГЎГ°Г ГЎГ®ГІГ·ГЁГЄГ  Гў Г±ГҐГЈГ¬ГҐГ­ГІГҐ
         int 21h
         mov ah, 09h
         mov dx, offset msgControls
         int 21h   
-        mov ax, 3100h                                ;оставляем программу резидентной
-        mov dx, (handlerInstall-start + 10Fh) / 16   ;размер резидентной программы в параграфач
+        mov ax, 3100h                                ;Г®Г±ГІГ ГўГ«ГїГҐГ¬ ГЇГ°Г®ГЈГ°Г Г¬Г¬Гі Г°ГҐГ§ГЁГ¤ГҐГ­ГІГ­Г®Г©
+        mov dx, (handlerInstall-start + 10Fh) / 16   ;Г°Г Г§Г¬ГҐГ° Г°ГҐГ§ГЁГ¤ГҐГ­ГІГ­Г®Г© ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» Гў ГЇГ Г°Г ГЈГ°Г ГґГ Г·
         int 21h
 
     endErrMark:
