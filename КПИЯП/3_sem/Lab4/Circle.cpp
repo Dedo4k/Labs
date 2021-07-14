@@ -5,7 +5,7 @@ Circle::Circle(int r)
 	cout << "Circle constructor" << endl;
 	this->radius = r;
 }
-
+ 
 Circle::~Circle()
 {
 	cout << "Circle destructor" << endl;
