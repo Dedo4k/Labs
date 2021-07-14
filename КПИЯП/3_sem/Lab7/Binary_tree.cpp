@@ -9,7 +9,7 @@ template<class TYPE> Node<TYPE>* Binary_tree<TYPE>::getRoot()
 {
 	return root;
 }
-
+ 
 template<class TYPE> Node<TYPE>* Binary_tree<TYPE>::Create_node(int key, TYPE data)
 {
 	Node<TYPE>* new_node = new Node<TYPE>;
