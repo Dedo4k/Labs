@@ -1,0 +1,68 @@
+#include "Static.h"
+#include "MyExc_Vvod.h"
+
+Static::Static()
+{
+	cout << "Static constructor" << endl;
+	proc = '\0';
+	procModel = 0;
+	voltage = 0;
+}
+
+Static::~Static()
+{
+	cout << "Static destructor" << endl;
+}
+
+void Static::setProc(string proc)
+{
+	this->proc = proc;
+}
+
+string Static::getProc()
+{
+	return proc;
+}
+
+void Static::setProcModel(int procModel)
+{
+	this->procModel = procModel;
+}
+
+int Static::getProcModel()
+{
+	return procModel;
+}
+
+void Static::setVoltage(int voltage)
+{
+	this->voltage = voltage;
+}
+
+int Static::getVoltage()
+{
+	return voltage;
+}
+
+istream& operator>>(istream& in, Static& stat)
+{
+	Computer* computer;
+	computer = &stat;
+	in >> *(dynamic_cast<Computer*>(computer));
+	cout << endl << "Enter procesor: ";
+	stat.proc = MyExc_Vvod::Check_string(10);
+	cout << endl << "Enter procesor model: ";
+	stat.procModel = MyExc_Vvod::Check_int();
+	cout << endl << "Enter voltage: ";
+	stat.voltage = MyExc_Vvod::Check_int();
+	return in;
+}
+
+ostream& operator<<(ostream& out, Static& stat)
+{
+	Computer* computer;
+	computer = &stat;
+	out << *(dynamic_cast<Computer*>(computer));
+	out << "|" << setw(10) << stat.proc << "|"<< setw(13) << stat.procModel << "|"<< setw(9) << stat.voltage;
+	return out;
+}
