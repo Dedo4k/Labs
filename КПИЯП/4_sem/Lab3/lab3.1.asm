@@ -1,9 +1,9 @@
 .model medium
- 
+  
 .stack  200h
  
 .data
-        ;Данные
+        ;Г„Г Г­Г­Г»ГҐ
         msgPressAnyKey  db      0Dh, 0Ah, 'Press any key to exit...', '$'
         CrLf            db      0Dh, 0Ah, '$'
         asPrompt        db      'Enter an array:', 0Dh, 0Ah, '$'
@@ -22,7 +22,7 @@
 ShowInt16 proc
         pusha
         mov bx,10
-        xor cx,cx      ;символов в модуле числа
+        xor cx,cx      ;Г±ГЁГ¬ГўГ®Г«Г®Гў Гў Г¬Г®Г¤ГіГ«ГҐ Г·ГЁГ±Г«Г 
         or ax,ax
         jns @@div
             neg ax
@@ -36,7 +36,7 @@ ShowInt16 proc
             xor dx,dx
             div bx
             push dx
-            inc cx      ;количество цифр в числе
+            inc cx      ;ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¶ГЁГґГ° Гў Г·ГЁГ±Г«ГҐ
             or ax,ax
             
         jnz @@div
@@ -52,16 +52,16 @@ ShowInt16 proc
         ret
 ShowInt16 endp
  
-;Вывод массива слов (word)
-;cx - количество выводимых элементов
-;ds:dx - адрес массива слов
+;Г‚Г»ГўГ®Г¤ Г¬Г Г±Г±ГЁГўГ  Г±Г«Г®Гў (word)
+;cx - ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГўГ»ГўГ®Г¤ГЁГ¬Г»Гµ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
+;ds:dx - Г Г¤Г°ГҐГ± Г¬Г Г±Г±ГЁГўГ  Г±Г«Г®Гў
 ShowArray proc
         pusha
  
-        jcxz @@saExit        ;если массив пустой - завершить
+        jcxz @@saExit        ;ГҐГ±Г«ГЁ Г¬Г Г±Г±ГЁГў ГЇГіГ±ГІГ®Г© - Г§Г ГўГҐГ°ГёГЁГІГј
  
-        mov si,1       ;индекс элемента массива
-        mov di,dx      ;адрес текущего элемента массива
+        mov si,1       ;ГЁГ­Г¤ГҐГЄГ± ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г¬Г Г±Г±ГЁГўГ 
+        mov di,dx      ;Г Г¤Г°ГҐГ± ГІГҐГЄГіГ№ГҐГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г¬Г Г±Г±ГЁГўГ 
         
         @@saForI:
             mov ax,[di]
@@ -69,7 +69,7 @@ ShowArray proc
             mov ah,02h
             mov dl,' '
             int 21h
-            ;переход к следующему элементу
+            ;ГЇГҐГ°ГҐГµГ®Г¤ ГЄ Г±Г«ГҐГ¤ГіГѕГ№ГҐГ¬Гі ГЅГ«ГҐГ¬ГҐГ­ГІГі
             inc si
             add di,2
             
@@ -220,16 +220,16 @@ invert proc
             je exit
             cwd
 
-            idiv bx           ;ax=ax/bx=1/n ax-целая dx-остаток
+            idiv bx           ;ax=ax/bx=1/n ax-Г¶ГҐГ«Г Гї dx-Г®Г±ГІГ ГІГ®ГЄ
                
-            push ax          ;сохраняем остаток
-            push bx          ;сохраняем делимое
-            push dx          ;сохраняем делитель                   
+            push ax          ;Г±Г®ГµГ°Г Г­ГїГҐГ¬ Г®Г±ГІГ ГІГ®ГЄ
+            push bx          ;Г±Г®ГµГ°Г Г­ГїГҐГ¬ Г¤ГҐГ«ГЁГ¬Г®ГҐ
+            push dx          ;Г±Г®ГµГ°Г Г­ГїГҐГ¬ Г¤ГҐГ«ГЁГІГҐГ«Гј                   
             
-            lea dx,ax        ;вывод целой части
+            lea dx,ax        ;ГўГ»ГўГ®Г¤ Г¶ГҐГ«Г®Г© Г·Г Г±ГІГЁ
             call ShowInt16   
             
-            mov ah,2         ;вывод точки
+            mov ah,2         ;ГўГ»ГўГ®Г¤ ГІГ®Г·ГЄГЁ
             mov dl,'.'
             int 21h
             
@@ -237,22 +237,22 @@ invert proc
             pop bx
             pop ax 
             
-            push cx          ;сохраняем счётчие массива for4
+            push cx          ;Г±Г®ГµГ°Г Г­ГїГҐГ¬ Г±Г·ВёГІГ·ГЁГҐ Г¬Г Г±Г±ГЁГўГ  for4
             
             push ax
             push bx
             push dx
             
-            mov cx,3         ;количество знаков после запятой
+            mov cx,3         ;ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г§Г­Г ГЄГ®Гў ГЇГ®Г±Г«ГҐ Г§Г ГЇГїГІГ®Г©
             
             for5:
-                pop dx       ;возвращаем остаток    1
-                pop bx       ;возвращаем делимое    0
-                pop ax       ;возвращаем делитель   3
+                pop dx       ;ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ Г®Г±ГІГ ГІГ®ГЄ    1
+                pop bx       ;ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ Г¤ГҐГ«ГЁГ¬Г®ГҐ    0
+                pop ax       ;ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ Г¤ГҐГ«ГЁГІГҐГ«Гј   3
                                 
                 mov ax,bx    ;                                bx=ax
                 push bx
-                xchg ax,dx   ;увеличиваем остаток в 10 раз    dx=3 ax=1            
+                xchg ax,dx   ;ГіГўГҐГ«ГЁГ·ГЁГўГ ГҐГ¬ Г®Г±ГІГ ГІГ®ГЄ Гў 10 Г°Г Г§    dx=3 ax=1            
                 mov bx,10    ;                                bx=10
                 mul bx
                 pop bx
@@ -293,11 +293,11 @@ main    proc
         mov ax,@data
         mov ds,ax
  
-        ;программа
+        ;ГЇГ°Г®ГЈГ°Г Г¬Г¬Г 
         mov ah,09h
         lea dx,[asPrompt]
         int 21h
-        ;ввод массива
+        ;ГўГўГ®Г¤ Г¬Г Г±Г±ГЁГўГ 
         lea di,[Array]                 ;
         xor cx,cx                      ; n=0
         xor bx,bx                      ; x=0
@@ -361,16 +361,16 @@ menu:
         lea dx,press5
         call printStr
 input:        
-        mov ah,1            ;выбор пункта меню
+        mov ah,1            ;ГўГ»ГЎГ®Г° ГЇГіГ­ГЄГІГ  Г¬ГҐГ­Гѕ
         int 21h
         
-        cmp al,'q'          ;инверсия
+        cmp al,'q'          ;ГЁГ­ГўГҐГ°Г±ГЁГї
         je invers
         
-        cmp al,'w'          ;квадрат
+        cmp al,'w'          ;ГЄГўГ Г¤Г°Г ГІ
         je sqrt
         
-        cmp al,'e'          ;модуль
+        cmp al,'e'          ;Г¬Г®Г¤ГіГ«Гј
         je abs
         
         cmp al,'r'
