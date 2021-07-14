@@ -1,5 +1,5 @@
 org 100h  
-
+ 
 .data
     filename        db 'file.txt',0
     fileOpenMsg     db "File was opened",10,13,'$'
