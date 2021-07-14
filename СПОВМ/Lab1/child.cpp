@@ -14,7 +14,7 @@ int main(int argc, const char * argv[]) {
         now = time(0);
         now += 86400;
         printw("                            %s", ctime(&now));
-        refresh();
+        refresh(); 
         napms(1000);
     }
     
