@@ -8,7 +8,7 @@ String::String()
 	str = nullptr;
 	length = 0;
 }
-
+ 
 String::String(int size)
 {
 	this->str = new char[size+1];
