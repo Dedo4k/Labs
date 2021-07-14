@@ -15,7 +15,7 @@ void Computer::setBrand(string brand)
 {
 	this->brand = brand;
 }
-
+ 
 string Computer::getBrand()
 {
 	return brand;
