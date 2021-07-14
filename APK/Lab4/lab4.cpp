@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <dos.h>
 
-void Menu(void) {
+void Menu(void) { 
 	printf("\n1. Play sound");
 	printf("\n2. Print channels kd");
 	printf("\n3. Print state words");
@@ -73,9 +73,9 @@ void TurnSpeaker(int isActive) {
 }
 
 void SetSoundFreq(unsigned int freq) {
-	long base = 1193180; //частоты генератора сигналов таймера
+	long base = 1193180; //Г·Г Г±ГІГ®ГІГ» ГЈГҐГ­ГҐГ°Г ГІГ®Г°Г  Г±ГЁГЈГ­Г Г«Г®Гў ГІГ Г©Г¬ГҐГ°Г 
 	long kd;
-	outp(0x43, 0xB6);//10110110 канал 2, операция 4, режим 3, формат 0
+	outp(0x43, 0xB6);//10110110 ГЄГ Г­Г Г« 2, Г®ГЇГҐГ°Г Г¶ГЁГї 4, Г°ГҐГ¦ГЁГ¬ 3, ГґГ®Г°Г¬Г ГІ 0
 	kd = base / freq;
 	outp(0x42, kd % 256);
 	kd /= 256;
@@ -218,7 +218,7 @@ void StateWords() {
 
 long RandomDigit() {
 	long bl, bh;
-	outp(0x43, 0x86);//4-5    00    6-7 10 2 порт
+	outp(0x43, 0x86);//4-5    00    6-7 10 2 ГЇГ®Г°ГІ
 	bl = inp(0x42);
 	bh = inp(0x42);
 	bh *= 256;
