@@ -10,7 +10,7 @@ int main() {
     if (hSerial == INVALID_HANDLE_VALUE)
     {
         if (GetLastError() == ERROR_FILE_NOT_FOUND)
-        {
+        { 
             cout << "serial port does not exist.\n";
         }
         cout << "some other error occurred.\n";
