@@ -4,7 +4,7 @@
 #include <conio.h>
 #include <ctype.h>
 #include <string.h>
-
+ 
 unsigned long msTimer = 0;
 
 int hour;
